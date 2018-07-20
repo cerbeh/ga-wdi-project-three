@@ -1,0 +1,39 @@
+div.points {
+  height: 250px;
+  width: 250px;
+  border-radius: 100%;
+  font-size: 75px;
+  color: $colour-four;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid $colour-two;
+  background-color: $colour-five;
+  margin: 10px;
+}
+div.points-small {
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+  font-size: 45px;
+  color: $colour-four;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid $colour-two;
+  background-color: $colour-five;
+  margin: 10px;
+}
+div.points-medium {
+  height: 190px;
+  font-size: 60px;
+  color: $colour-four;
+  width: 190px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid $colour-two;
+  background-color: $colour-five;
+  margin: 10px;
+}

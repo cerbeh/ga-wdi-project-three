@@ -1,0 +1,65 @@
+<div class="columns is-centered">
+  <div class="column is-6">
+    <h1 class="title is-1">New Favour</h1>
+
+    <form ng-submit="updateFavour()" name="form" novalidate>
+
+      <div class="field">
+        <label class="label" for="title">Title</label>
+        <input class="input" name="title" id="title" ng-model="data.title" required />
+      </div>
+
+      <div class="field is-grouped">
+        <label class="label" for="points">Points</label>
+        <div class="control">
+          <div class="select">
+            <select ng-model="data.points" name="points" id="points" ng-required="true" ng-change="checkPoints()">
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option>40</option>
+              <option>50</option>
+              <option>75</option>
+              <option>100</option>
+            </select>
+          </div>
+        </div>
+        <label class="label" for="category">Category</label>
+        <div class="control">
+          <div class="select">
+            <select ng-model="data.category" name="category" id="category" required>
+              <option>Domestic</option>
+              <option>Event</option>
+              <option>Recreation</option>
+              <option>Education</option>
+              <option>Befriending</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label" for="address">Address</label>
+        <input class="input" id="address" name="address" placeholder="Address" ng-model="data.address" google-autocomplete update-location="updateLocation(location)" />
+      </div>
+
+      <p>You have {{ currentUser.points }} points available to you.</p>
+      <button class="button" ng-disabled="!enoughPoints">Submit</button>
+    </form>
+
+    <div ng-messages="form.title.$error" ng-if="form.title.$pristine || form.title.$dirty">
+      <small ng-message="required">Title field is required</small>
+    </div>
+
+    <div ng-messages="form.points.$error" ng-if="form.points.$pristine">
+      <small>Please enter an amount of points</small>
+    </div>
+
+    <div ng-messages="form.category" ng-if="form.category.$pristine">
+      <small>Please chose a category</small>
+    </div>
+
+    <p ng-if="!enoughPoints">You do not have enough points</p>
+
+  </div>
+</div>

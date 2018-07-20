@@ -1,0 +1,60 @@
+<div class="columns is-multiline is-centered">
+
+  <div class="column is-one-third-desktop is-one-half-tablet">
+    <img ng-src="{{user.image}}" alt="user_profile">
+  </div>
+
+  <div class="column is-two-thirds-desktop is-one-half-table">
+    <h1 class="title is-1">{{user.username}}</h1>
+    <p>{{user.bio}}</p>
+    <p><strong>{{user.telephone}}</strong></p>
+    
+    <div ng-if="isOwner" class="field is-grouped">
+      <p class="control">
+        <a ui-sref="usersEdit({ id: user._id })" class="button is-small">Edit Profile</a>
+      </p>
+      <p class="control">
+        <button class="button is-small" ng-click="deleteUser()">Delete Profile</button>
+      </p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="columns is-multiline">
+
+      <div class="column is-full">
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <h2 class="title is-2">Favours In Progress</h2>
+            <div class="similar-favours-show" ng-if="user.inProgress.length===0">
+              <p>{{user.username}} doesn't currently have any favours in porgress. When {{user.username}} has favours to complete, they will appear here.</p>
+            </div>
+          </div>
+
+          <div class="column is-3" ng-repeat="inProgress in user.inProgress">
+            <a ui-sref="favourShow({ id: inProgress._id })">
+              <info-card name="inProgress.title" points="inProgress.points"></info-card>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-full">
+        <div class="columns is-multiline">
+          <div class="column is-12">
+            <h2 class="title is-2">Previous Favours</h2>
+            <div class="similar-favours-show" ng-if="user.completedFavours.length===0">
+              <p>{{user.username}} is yet to complete any favours. When {{user.username}} does complete her first favour, they will show here.</p>
+            </div>
+          </div>
+          <div class="column is-3-desktop is-6-tablet" ng-repeat="completedFavour in user.completedFavours">
+            <a ui-sref="favourShow({ id: completedFavour._id })">
+              <info-card name="completedFavour.title" points="completedFavour.points"></info-card>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

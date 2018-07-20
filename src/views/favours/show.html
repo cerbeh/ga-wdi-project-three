@@ -1,0 +1,127 @@
+<div class="columns">
+
+  <div class="column is-one-third-desktop">
+    <div class="points">
+      <h1 class="title is-1 favour-show-points">{{ favour.points }}</h1>
+    </div>
+  </div>
+  <div class="column">
+    <div class="favour-info">
+      <h2 class="title is-2">{{ favour.title }},</h2>
+      <h3 class="subtitle is-4">asked by <a ui-sref="usersShow({ id: favour.owner._id })">{{ favour.owner.username }}</a></h3>
+      <p class="favour-description">{{favour.description}}</p>
+      <h4 class="subtitle is-4 favour-header-four"><span class="category-title">Category: <strong>{{favour.category}}</strong></span></h4>
+      <h4 class="subtitle is-4 favour-header-four"><span class="favour-status">Status: <strong>{{favour.status}}</strong></span></h4>
+      <div ng-if="isOwner">
+        <div class="field is-grouped">
+          <p class="control">
+            <a ui-sref="favoursEdit({ id: favour._id })" class="button is-small">Edit</a>
+          </p>
+          <p class="control">
+            <button class="button is-small" ng-click="deleteFavour()">Delete</button>
+          </p>
+        </div>
+      </div>
+
+      <div class="buttons is-centered">
+        <button class="button is-success" ng-if="canVolunteer"  ng-click="claimFavour()">Claim this favour</button>
+        <!-- favour.status!==completed || favour.status!==verified ||  -->
+        <button class="button is-success" ng-if="isChosenVolunteer && favour.status==='inProgress'" ng-click="changeStatus()">I've Completed Favour</button>
+        <button class="button is-success" ng-if="isOwner && favour.status==='completed'" ng-click="changeStatus()">I've Verifed Favour Complete</button>
+      </div>
+      <!-- <p ng-if="canVolunteer()">You've already volunteered!</p> -->
+    </div>
+  </div>
+</div>
+<section class="selected-volunteers-bar" ng-if="favour.chosen_volunteers.length !== 0">
+  <h2 class="title is-2">Selected Volunteer:</h2>
+  <div class="volunteers columns">
+    <div class="card column is-3 volunteer-cards" ng-repeat="chosen in favour.chosen_volunteers">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img ng-src="{{ chosen.image }}" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <h4 class="title is-4"><a ui-sref="usersShow({ id: chosen._id })">{{ chosen.username }}</a></h4>
+            <h5 class="subtitle is-5">{{ chosen.points }}</h5>
+            <button class="button is-success" ng-if="favour.chosen_volunteers.length === 0 && isOwner" ng-click="chooseVolunteer(volunteer)">Choose</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="volunteers-bar" ng-show="favour.chosen_volunteers.length === 0">
+  <h2 class="title is-2">Volunteers:</h2>
+  <div class="volunteers columns">
+    <div class="card column is-3 volunteer-cards" ng-repeat="volunteer in favour.volunteers">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure ng-if="volunteer.image" class="image is-48x48">
+              <img ng-src="{{volunteer.image}}" alt="User Avatar">
+            </figure>
+          </div>
+          <div class="media-content">
+            <h4 class="title is-4"><a ui-sref="usersShow({ id: volunteer._id })">{{ volunteer.username }}</a></h4>
+            <h5 class="subtitle is-5">{{ volunteer.points }}</h5>
+            <button class="button is-success" ng-if="favour.chosen_volunteers.length === 0 && isOwner" ng-click="chooseVolunteer(volunteer)">Choose</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="comments">
+  <form ng-submit="addComment()">
+    <div class="field">
+      <label class="label" for="">Write a comment here...</label>
+      <textarea class="textarea" name="content" id="content" rows="4" ng-model="data.content"></textarea>
+    </div>
+    <button class="button is-success is-small">Add comment</button>
+  </form>
+
+  <article class="media" ng-repeat="comment in favour.comments">
+    <figure class="media-left">
+      <p class="image is-64x64">
+        <img ng-src="{{comment.author.image}}">
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{comment.author.username}}</strong>
+          <br>
+          {{comment.content}}
+        </p>
+      </div>
+    </div>
+    <div class="media-right">
+      <button ng-show="isOwner" class="delete" ng-click="removeComment(comment)"></button>
+    </div>
+  </article>
+
+</section>
+
+<section class="gmap">
+  <div google-map location="favour.location"></div>
+</section>
+
+<section class="similar-favours">
+  <h2 class="title is-2">Similar Available Favours</h2>
+  <div class="columns">
+    <div class="similar-favours-show" ng-if="favour.similarFavours.length===0">
+      <p>This is where other favours from the {{favour.category}} category will appear if available to volunteer for.</p>
+    </div>
+    <div class="column is-3" ng-repeat="sfavour in favour.similarFavours">
+      <a class="info-card-wrap" ui-sref="favourShow({ id: sfavour._id })">
+        <info-card name="sfavour.title" points="sfavour.points"></info-card>
+      </a>
+    </div>
+  </div>
+</section>

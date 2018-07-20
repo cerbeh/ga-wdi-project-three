@@ -1,12 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="favourAPI">
 <head>
   <meta charset="utf-8">
-  <title>WDI32 Group Project</title>
+  <title>KarmaCommunity</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Bungee|Open+Sans:400,400i,700|Roboto" rel="stylesheet">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdsDypPEp9X7T8qg-p41_pz_c2EYsqr8Y&libraries=places"></script>
 </head>
-<body>
+<body ng-controller="MainCtrl">
 
-  <h1>WDI32 Group Project</h1>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" ui-sref="home">Home</a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" ng-class="{ 'is-active': navbarOpen }" ng-click="toggleMenu()">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" ng-class="{ 'is-active': navbarOpen }">
+      <div class="navbar-start">
+        <a class="navbar-item" ng-if="isAuthenticated()" ui-sref="usersShow({ id: currentUser._id })">
+          Welcome back {{ currentUser.username }}
+        </a>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item" ng-if="!isAuthenticated()" ui-sref="register">Register</a>
+        <a class="navbar-item" ng-if="!isAuthenticated()" ui-sref="login">Log in</a>
+        <a class="navbar-item" ng-if="isAuthenticated()" ng-click="logout()">Logout</a>
+        <a class="navbar-item" ng-if="isAuthenticated()" ui-sref="usersIndex">Leaderboard</a>
+        <!-- <a class="navbar-item" ui-sref="favourIndex">Favours</a> -->
+        <a class="navbar-item" ng-if="isAuthenticated()" ui-sref="favoursNew">New Favour</a>
+        <a class="navbar-item" ng-if="isAuthenticated()" ui-sref="about">About</a>
+      </div>
+    </div>
+  </nav>
+  <div class="section">
+    <div class="container">
+      <h1 class="title is-1 logo-title">KarmaCommunity</h1>
+
+      <div class="is-{{flashMessage.type}}" ng-class="{ 'is-active': flashMessage }">
+        {{ flashMessage.content }}
+      </div>
+
+      <ui-view></ui-view>
+
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <span class="footer-logo-title">KarmaCommunity</span> was built by <a href="https://github.com/cerbeh">Martin</a> and <a href="https://github.com/stevanpopo">Stevan</a>.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>

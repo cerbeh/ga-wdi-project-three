@@ -1,0 +1,25 @@
+p {
+  font-size: 20px;
+  font-family: $font-one;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-two;
+}
+
+nav a {
+  font-family: $font-two;
+}
+
+h1.logo-title {
+  font-size: 1.3em;
+  font-family: $font-three;
+}
+
+.footer-logo-title, .logo-font {
+  font-family: $font-three;
+}
+
+.favour-title {
+  color: $colour-three;
+}

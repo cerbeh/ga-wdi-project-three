@@ -1,0 +1,39 @@
+<h3 class="title is-2">Edit Profile</h3>
+
+{{data}}
+{{user.data}}
+<form ng-submit="updateUser()">
+  <!-- class="columns new-user-form" -->
+  <!-- <div class="column"> -->
+    <div class="field">
+      <label class="label" for="username">Username</label>
+      <input class="input" type="text" id="username" name="username" ng-model="data.username">
+    </div>
+    <div class="field">
+      <label class="label" for="email">Email</label>
+      <input class="input" type="email" id="email" name="email" ng-model="data.email">
+    </div>
+    <div class="field">
+      <label class="label" for="password">Password</label>
+      <input class="input" type="password" id="password" name="password" ng-model="data.password">
+    </div>
+    <div class="field">
+      <label class="label" for="passwordConfirmation">Password Confirmation</label>
+      <input class="input" type="password" id="passwordConfirmation" name="passwordConfirmation" ng-model="data.passwordConfirmation">
+    </div>
+    <div class="field">
+      <label class="label" for="image">Image</label>
+      <button class="button" id="image" name="image" file-picker ng-model="data.image">Choose file</button>
+    </div>
+    <div class="field">
+      <label class="label" for="bio">Bio</label>
+      <textarea class="textarea" type="text" id="bio" name="bio" ng-model="data.bio" placeholder="Tell us a bit about you..." rows="4"></textarea>
+    </div>
+  <!-- </div> -->
+
+  <!-- <div class="column is-half-desktop">
+    <img src="" alt="user_image_submit">
+  </div> -->
+
+  <button class="button is-success">Update profile</button>
+</form>

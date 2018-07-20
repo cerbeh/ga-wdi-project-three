@@ -1,0 +1,42 @@
+.map {
+  height: 300px;
+}
+
+div.volunteer-cards {
+  border: 3px solid $colour-two;
+  border-radius: 5%;
+  background-color: $colour-five;
+}
+
+div.similar-favours-show {
+  border: 3px solid $colour-two;
+  border-radius: 3%;
+  background-color: $colour-five;
+  padding: 14px 0px 14px 20px;
+}
+
+div.points h1.favour-show-points {
+  color: $colour-four;
+}
+
+span.favour-status {
+  background-color: $colour-four;
+  padding: 10px;
+  border-radius: 5%;
+  border: 2px solid $colour-three;
+}
+
+span.category-title {
+  background-color: $colour-two;
+  padding: 10px;
+  border-radius: 5%;
+  border: 2px solid $colour-three;
+}
+
+h4.favour-header-four {
+  margin-bottom: 15px;
+}
+
+p.favour-description {
+  margin-bottom: 20px;
+}
