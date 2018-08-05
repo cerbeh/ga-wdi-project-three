@@ -7,7 +7,7 @@
     "start:server": "nodemon",
     "test": "nyc mocha \"test/**/*_spec.js\" --require \"test/spec_helper\" --recursive --exit",
     "build": "webpack",
-    "start": "yarn build & node index",
+    "start": "yarn build && node index",
     "seed": "node db/seeds"
   },
   "author": "Students",
