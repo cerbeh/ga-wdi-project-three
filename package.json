@@ -6,7 +6,7 @@
     "start:client": "webpack-dev-server",
     "start:server": "nodemon",
     "test": "nyc mocha \"test/**/*_spec.js\" --require \"test/spec_helper\" --recursive --exit",
-    "build": "webpack",
+    "build": "webpack -p",
     "start": "yarn build && node index",
     "seed": "node db/seeds"
   },
