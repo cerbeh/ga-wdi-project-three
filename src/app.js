@@ -6,7 +6,7 @@ import './scss/main.scss';
 import 'filepicker-js';
 import 'angular-filepicker/dist/angular_filepicker';
 import 'angular-messages';
-import 'angular/router';
+import 'angular-new-router';
 
 import Router from './config/routes';
 import Auth from './config/satellizer';
