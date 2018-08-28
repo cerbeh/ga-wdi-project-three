@@ -100,16 +100,6 @@ angular-messages@^1.7.2:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.7.2.tgz#77116d83a72a00234d8177de9837bc867321f25e"
 
-angular-new-router@angular/router:
-  version "0.5.3"
-  resolved "https://codeload.github.com/angular/router/tar.gz/f642b4caad6501609182487ce5e7107d9876d912"
-  dependencies:
-    angular2 "^2.0.0-beta.8"
-
-angular2@^2.0.0-beta.8:
-  version "2.0.0-beta.21"
-  resolved "https://registry.yarnpkg.com/angular2/-/angular2-2.0.0-beta.21.tgz#78643e590641526a2596dcd1d5cca3a5509ed76d"
-
 angular@^1.6.0:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.2.tgz#687b955dbe5c533f8d73460461707af00360251f"

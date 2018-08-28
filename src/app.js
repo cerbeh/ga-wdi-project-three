@@ -6,7 +6,6 @@ import './scss/main.scss';
 import 'filepicker-js';
 import 'angular-filepicker/dist/angular_filepicker';
 import 'angular-messages';
-import 'angular-new-router';
 
 import Router from './config/routes';
 import Auth from './config/satellizer';
@@ -28,7 +27,7 @@ import googleMap from './directives/googleMaps';
 import googleAutocomplete from './directives/googleAutocomplete';
 import infoCard from './directives/infoCard';
 
-angular.module('favourAPI', ['ngRoute', 'ui.router', 'satellizer', 'angular-filepicker', 'ngMessages'])
+angular.module('favourAPI', ['ui.router', 'satellizer', 'angular-filepicker', 'ngMessages'])
   .config(Router)
   .config(Auth)
   .config(Upload)
